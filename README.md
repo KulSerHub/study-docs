@@ -27,10 +27,13 @@ Skill для Claude Code: скачивает онлайн-документаци
 
 ```bash
 cd ВАШ-ПРОЕКТ
-mkdir -p .claude/skills && cd .claude/skills
-git clone https://github.com/KulSerHub/study-docs.git
-cd study-docs && npm install
+mkdir -p .claude/skills
+git clone https://github.com/KulSerHub/study-docs.git .claude/skills/study-docs
+npm install --prefix .claude/skills/study-docs
 ```
+
+> [!IMPORTANT]
+> После установки перезапустите Claude Code или начните новую сессию.
 
 > `npm install` установит зависимости для работы скрипта очистки:
 > - `jsdom` — превращает HTML-страницу в DOM, как в браузере.

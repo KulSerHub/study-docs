@@ -18,6 +18,7 @@ const path = require('path');
 const { JSDOM } = require('jsdom');
 const { Readability } = require('@mozilla/readability');
 const TurndownService = require('turndown');
+const { gfm } = require('turndown-plugin-gfm');
 
 const dir = process.argv[2];
 const base = process.argv[3] || 'https://example.com/';
@@ -27,6 +28,7 @@ if (!dir) {
 }
 
 const td = new TurndownService({ headingStyle: 'atx', codeBlockStyle: 'fenced' });
+td.use(gfm); // понимание таблиц и зачёркивания (GFM); ссылки/код/списки работают как раньше
 
 // собрать все .html рекурсивно (чтобы работало и при повторном запуске)
 function listHtml(root) {
